@@ -24,8 +24,9 @@ public class TC1_LoginPage extends BaseClass {
 
 	}
 
-	@When("User enter valid {string} and {string}")
-	public void userEnterValidAnd(String username, String password) {
+	
+	@When("User enter {string} and {string}")
+	public void userEnterAnd(String username, String password) {
 		pom.getLoginpage().login(username, password);
 	}
 
@@ -48,8 +49,4 @@ public class TC1_LoginPage extends BaseClass {
 	    boolean contains = errorMsgLogin.contains(string);
 	    Assert.assertTrue(contains);
 	}
-
-
-
-
 }

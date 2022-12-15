@@ -18,7 +18,6 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		         features="src\\test\\resources\\Features",
                  glue="com.stepdefinition",
                  monochrome =true
-		
 		)
 public class RunnerClass extends BaseClass{
 
