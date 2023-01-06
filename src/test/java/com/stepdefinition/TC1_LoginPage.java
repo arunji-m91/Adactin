@@ -12,41 +12,47 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class TC1_LoginPage extends BaseClass {
-	LoginPage loginpage;
-	SearchHotelPage searchHotelPage;
 	PageObjectManager pom = new PageObjectManager();
 
-	@Given("User is in Adactin Hotel Login Page")
-	public void userIsInAdactinHotelLoginPage() {
-//		getDriver("chrome");
-//		giveUrl("http://adactinhotelapp.com/");
-//		impliWait();
+	
 
+	@Given("User is in Sbi Online Portal")
+	public void userIsInSbiOnlinePortal() {
+	   
+	}
+	@When("User click the button continue and user switched into the login page")
+	public void userClickTheButtonContinueAndUserSwitchedIntoTheLoginPage() {
+	    pom.getLoginpage().getTxtContinueLogin().click();
+	   
+	}
+	@Then("User should verify username password login and reset block is visible")
+	public void userShouldVerifyUsernamePasswordLoginAndResetBlockIsVisible() {
+	  boolean visibilityCheck = pom.getLoginpage().visibilityCheck();
+	  Assert.assertTrue(visibilityCheck);
 	}
 
 	
-	@When("User enter {string} and {string}")
-	public void userEnterAnd(String username, String password) {
-		pom.getLoginpage().login(username, password);
-	}
 
+	@When("User enter invalid {string} and {string}")
+	public void userEnterInvalidAnd(String username, String password) {
+		pom.getLoginpage().login(username,password);
+	   
+	}
 	@When("User Click the Login button")
 	public void userClickTheLoginButton() {
-		pom.getLoginpage().clickLogin();
+	  pom.getLoginpage().getBtnLogin().click();
+		
+	}
+	@Then("User should verify the Login is Error message contains {string}")
+	public void userShouldVerifyTheLoginIsErrorMessageContains(String expected) {
+	    String actual = pom.getLoginpage().getTextFromAlert();
+	    boolean contains = actual.contains(expected);
+	    Assert.assertTrue(contains);
+	    
 	}
 
-	@Then("User should verify the Login Success message contains {string}")
-	public void userShouldVerifyTheLoginSuccessMessageContains(String username) {
-		searchHotelPage = pom.getSearchHotelPage();
-		String verificationLoginPage = searchHotelPage.verificationLoginPage();
-		boolean contains = verificationLoginPage.contains(username);
-		Assert.assertTrue(contains);
-	}
-	
-	@Then("User should verify the Login is Error message contains {string}")
-	public void userShouldVerifyTheLoginIsErrorMessageContains(String string) {
-	    String errorMsgLogin = pom.getLoginpage().errorMsgLogin();
-	    boolean contains = errorMsgLogin.contains(string);
-	    Assert.assertTrue(contains);
-	}
+
+
+
+
 }

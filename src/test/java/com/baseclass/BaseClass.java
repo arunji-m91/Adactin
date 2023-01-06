@@ -17,6 +17,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.support.ui.Select;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
@@ -29,6 +31,18 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseClass {
 
 	public static WebDriver driver;
+	/**
+	 * @author ARUN M
+	 * @param element
+	 * @param text
+	 * @Date 16/12/2022
+	 */
+	
+	public static void selByVisibleText(WebElement element,String text) {
+		Select select = new Select(element);
+		select.selectByVisibleText(text);
+	}
+	
 
 	/**
 	 * @Description Close Window
