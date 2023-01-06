@@ -11,7 +11,8 @@ public class HookClass extends BaseClass {
 		@Before
 		public void launchBrowser() {
 			getDriver("chrome");
-			giveUrl("http://adactinhotelapp.com/");
+			giveUrl("https://retail.onlinesbi.sbi/retail/login.htm");
+			maximize();
 			impliWait();
 		}
 		@After

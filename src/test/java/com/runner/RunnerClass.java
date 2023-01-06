@@ -12,14 +12,15 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+		       tags ="@Login",
 		         plugin = {"pretty","json:target/Output.json"},
 		         snippets = SnippetType.CAMELCASE,
 		         dryRun = false,
 		         features="src\\test\\resources\\Features",
                  glue="com.stepdefinition",
                  monochrome =true
-		
 		)
+//checking branch change
 public class RunnerClass extends BaseClass{
 
 	@AfterClass
